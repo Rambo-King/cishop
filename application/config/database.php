@@ -80,7 +80,7 @@ $db['default'] = array(
 	'password' => 'root',
 	'database' => 'cishop',
 	'dbdriver' => 'mysqli',
-	'dbprefix' => '',
+	'dbprefix' => 'king_',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
 	'cache_on' => FALSE,
