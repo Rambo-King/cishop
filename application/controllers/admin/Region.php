@@ -28,8 +28,11 @@ class Region extends Admin_Controller{
         $this->load->view('admin/cat_add.html', $data);
     }
 
-    public function update(){
-        $this->load->view('admin/cat_edit.html');
+    //uri 类 接收第一个参数 $id || $this->uri->segment(4, 0)
+    public function update($id){
+        $data['regions'] = $this->model->_list();
+        $data['region'] = $this->model->_one($id);
+        $this->load->view('admin/cat_edit.html', $data);
     }
 
     public function insert(){
@@ -54,6 +57,46 @@ class Region extends Admin_Controller{
             }else{
                 echo 'Add Failure';
             }
+        }
+    }
+
+    //更新时 父分类值 不可是本身 及 子分类
+    public function modify(){
+        $id = $this->input->post('cat_id');
+        $pid = $this->input->post('parent_id');
+        //获取子分类
+        $subCategory = $this->model->_list($id);
+        $temp = [$id];
+        foreach($subCategory as $v){
+            $temp[] = $v['cat_id'];
+        }
+        if(!in_array($pid, $temp)){
+            $data = [
+                'cat_name' => $this->input->post('cat_name', true),
+                'parent_id' => $this->input->post('parent_id'),
+            ];
+            if($this->model->_modify($id, $data)){
+                $d = [
+                    'url' => site_url('admin/region/index').'/'.$id,
+                    'message' => '更新成功',
+                    'wait' => 2,
+                ];
+                $this->load->view('admin/message.html', $d);
+            }else{
+                $d = [
+                    'url' => site_url('admin/region/index').'/'.$id,
+                    'message' => '更新失败',
+                    'wait' => 2,
+                ];
+                $this->load->view('admin/message.html', $d);
+            }
+        }else{
+            $data = [
+                'url' => site_url('admin/region/update').'/'.$id,
+                'message' => '不可将分类放置到当前分类或其子分类',
+                'wait' => 3,
+            ];
+            $this->load->view('admin/message.html', $data);
         }
     }
 

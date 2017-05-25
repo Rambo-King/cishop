@@ -48,7 +48,7 @@
 					<td width="10%" align="right"><span onclick="listTable.edit(this, 'edit_sort_order', 1)" title="点击修改内容" style="">50</span></td>
 					<td width="24%" align="center">
 						<a href="category.php?act=move&amp;cat_id=1">转移商品</a> |
-						<a href="category.php?act=edit&amp;cat_id=1">编辑</a> |
+						<a href="<?= site_url('admin/region/update').'/'.$region['cat_id']?>">编辑</a> |
 						<a href="javascript:;" onclick="listTable.remove(1, '您确认要删除这条记录吗?')" title="移除">移除</a>
 					</td>
 				</tr>

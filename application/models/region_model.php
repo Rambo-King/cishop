@@ -34,4 +34,13 @@ class Region_model extends CI_Model{
         return $this->db->insert(self::TBL, $data);
     }
 
+    public function _one($id){
+        $query = $this->db->where(['cat_id' => $id])->get(self::TBL);
+        return $query->row_array();
+    }
+
+    public function _modify($id, $data){
+        return $this->db->where(['cat_id' => $id])->update(self::TBL, $data);
+    }
+
 }
