@@ -5,8 +5,8 @@
 <meta name="robots" content="noindex, nofollow">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="Refresh" content ="<?php echo $wait;?> ;url=<?php echo $url;?>"/>
-<link href="styles/general.css" rel="stylesheet" type="text/css" />
-<link href="styles/main.css" rel="stylesheet" type="text/css" />
+<link href="<?= base_url('application/views/admin/styles/general.css') ?>" rel="stylesheet" type="text/css" />
+<link href="<?= base_url('application/views/admin/styles/main.css') ?>" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <h1>
@@ -19,7 +19,7 @@
       <tr>
         <td width="50" valign="top">
         <!--  <img src="images/information.gif" width="32" height="32" border="0" alt="information" /> -->
-          <img src="images/warning.gif" width="32" height="32" border="0" alt="warning" />
+          <img src="<?= base_url('application/views/admin/images/warning.gif') ?>" width="32" height="32" border="0" alt="warning" />
        <!--   <img src="images/confirm.gif" width="32" height="32" border="0" alt="confirm" /> -->
         </td>
         <td style="font-size: 14px; font-weight: bold"><?php echo $message;?></td>
