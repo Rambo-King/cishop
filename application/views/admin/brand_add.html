@@ -3,8 +3,8 @@
 <head>
 <title>SHOP 管理中心 - 品牌管理 </title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href="styles/general.css" rel="stylesheet" type="text/css" />
-<link href="styles/main.css" rel="stylesheet" type="text/css" />
+<link href="<?= base_url('application/views/admin/styles/general.css') ?>" rel="stylesheet" type="text/css" />
+<link href="<?= base_url('application/views/admin/styles/main.css') ?>" rel="stylesheet" type="text/css" />
 </head>
 <body>
 
@@ -15,7 +15,7 @@
 </h1>
 
 <div class="main-div">
-<form method="post" action="brand.php" name="theForm" enctype="multipart/form-data" onsubmit="return validate()">
+<form method="post" action="<?= site_url('admin/brand/insert') ?>" name="theForm" enctype="multipart/form-data" onsubmit="return validate()">
 <table cellspacing="1" cellpadding="3" width="100%">
   <tbody><tr>
     <td class="label">品牌名称</td>
