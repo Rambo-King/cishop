@@ -42,5 +42,72 @@ class Region_model extends CI_Model{
     public function _modify($id, $data){
         return $this->db->where(['cat_id' => $id])->update(self::TBL, $data);
     }
+    /*
+    array(
+        array(
+            'id' => 1,
+            'name' => '服装',
+            'pid' => 0,
+            'child' => array(
+                array(
+                    'id' => 2
+                    'name' => '男装',
+                    'pid' => 1,
+                    'child' => array(
+                        array(
+                            'id' => 3
+                            'name' => '夹克',
+                            'pid' => 2,
+                        ),
+                        array(
+                            'id' => 4
+                            'name' => '牛仔',
+                            'pid' => 2,
+                        )
+                    )
+                ),
+                array(
+                    'id' => 5
+                    'name' => '女装',
+                    'pid' => 1,
+                    'child' => array(...)
+                )
+            )
+        ),
+        array(
+            'id' => 10,
+            'name' => '鞋帽',
+            'pid' => 0,
+            'child' => array(...)
+        )
+    )
+    */
+    public function front_cate(){
+        $query = $this->db->get(self::TBL);
+        return $this->_front_tree($query->result_array());
+    }
+
+    public function _front_tree($data, $pid = 0){
+        $child = $this->_child($data, $pid);
+        if(empty($child)) return null;
+
+        foreach($child as $k=>$val){
+            $current_child = $this->_front_tree($data, $val['cat_id']);
+            if(!is_null($current_child)){
+                $child[$k]['child'] = $current_child;
+            }
+        }
+
+        return $child;
+    }
+
+    public function _child($data, $pid = 0){
+        $child = [];
+        foreach($data as $d){
+            if($d['parent_id'] == $pid)
+                $child[] = $d;
+        }
+        return $child;
+    }
 
 }

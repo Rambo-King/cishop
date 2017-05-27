@@ -8,18 +8,19 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Home extends CI_Controller{
+class Home extends Home_Controller{
 
     public function __construct(){
         parent::__construct();
-        //$this->load->model('region_model', 'rModel');
+        $this->load->model('region_model', 'rModel');
         $this->load->model('goods_model', 'gModel');
     }
 
     public function index(){
-        //$data['regions'] = $this->rModel->getList();
-        $data['goods'] = $this->gModel->best();
-        $this->load->view('front/index.html', $data);
+        //$data['goods'] = $this->gModel->best();
+        //$this->load->view('index.html', $data);
+        $data['regions'] = $this->rModel->front_cate();
+        $this->load->view('index.html', $data);
     }
 
 }
