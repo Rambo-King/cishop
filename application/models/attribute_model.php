@@ -20,6 +20,13 @@ class Attribute_model extends CI_Model{
         $query = $this->db->get(self::TBL);
         return $query->result_array();
     }
+
+    public function getByCondition($id){
+        $condition = ['type_id' => $id];
+        $query = $this->db->where($condition)->get(self::TBL);
+        return $query->result_array();
+    }
+
     /*
     public function getListPage($limit, $offset){
         $query = $this->db->limit($limit, $offset)->get(self::TBL);
