@@ -17,10 +17,16 @@ class Home extends Home_Controller{
     }
 
     public function index(){
-        //$data['goods'] = $this->gModel->best();
-        //$this->load->view('index.html', $data);
         $data['regions'] = $this->rModel->front_cate();
-        $this->load->view('index.html', $data);
+
+        //载入多个视图  分离
+        $this->load->view('header.html', $data);
+
+        $this->load->view('menu1.html');
+
+        $this->load->view('index.html');
+
+        $this->load->view('footer.html');
     }
 
 }

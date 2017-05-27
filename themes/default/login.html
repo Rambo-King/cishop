@@ -3,9 +3,9 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
 	<title>用户登录</title>
-	<link rel="stylesheet" href="css/base.css" />
-	<link rel="stylesheet" href="css/global.css" />
-	<link rel="stylesheet" href="css/login-register.css" />
+    <link rel="stylesheet" href="<?= base_url('themes/default/css/base.css') ?>" />
+    <link rel="stylesheet" href="<?= base_url('themes/default/css/global.css') ?>" />
+    <link rel="stylesheet" href="<?= base_url('themes/default/css/login-register.css') ?>" />
 	
 </head>
 <body>
@@ -76,7 +76,7 @@
 				<form action="" method="POST">
 					<dl>
 						<dt>用户名</dt>
-						<dd><input type="text" name="user" class="text" /></dd>
+						<dd><input type="text" name="username" class="text" /></dd>
 					</dl>
 					<dl>
 						<dt>密&nbsp;&nbsp;&nbsp;&nbsp;码</dt>
@@ -93,7 +93,7 @@
 				</form>
 				<dl>
 					<dt>&nbsp;</dt>
-					<dd> 还不是本站会员？立即 <a href="" class="register">注册</a></dd>
+					<dd> 还不是本站会员？立即 <a href="<?= site_url('user/register') ?>" class="register">注册</a></dd>
 				</dl>
 				<dl class="other">
 					<dt>&nbsp;</dt>
